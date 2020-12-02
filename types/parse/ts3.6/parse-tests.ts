@@ -145,7 +145,7 @@ function test_query() {
 
     // Find objects where the array in arrayKey contains all of the elements 2, 3, and 4.
     query.containsAll('arrayKey', [2, 3, 4]);
-    query.containsAllStartingWith('arrayKey', [2, 3, 4]);
+    query.containsAllStartingWith('arrayKey', ['2', '3', '4']);
 
     query.startsWith('name', "Big Daddy's");
     query.equalTo('score', gameScore);
@@ -1599,6 +1599,8 @@ function testQuery() {
         query.containsAllStartingWith('attribute1', ['a', 'b', 'c']);
         // $ExpectError
         query.containsAllStartingWith('nonexistentProp', ['a', 'b', 'c']);
+        // $ExpectError
+        query.containsAllStartingWith('attribute1', [1, 2, 3]);
 
         // $ExpectType Query<MySubClass>
         query.descending(['attribute1', 'attribute2', 'objectId']);

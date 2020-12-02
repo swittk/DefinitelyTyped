@@ -657,8 +657,8 @@ namespace Parse {
         containedBy<K extends (keyof T['attributes'] | keyof BaseAttributes)>(key: K, values: Array<T['attributes'][K] | (T['attributes'][K] extends Object ? string : never)>): this;
         containedIn<K extends (keyof T['attributes'] | keyof BaseAttributes)>(key: K, values: Array<T['attributes'][K] | (T['attributes'][K] extends Object ? string : never)>): this;
         contains<K extends (keyof T['attributes'] | keyof BaseAttributes)>(key: K, substring: string): this;
-        containsAll<K extends (keyof T['attributes'] | keyof BaseAttributes)>(key: K, values: any[]): this;
-        containsAllStartingWith<K extends (keyof T['attributes'] | keyof BaseAttributes)>(key: K, values: any[]): this;
+        containsAll<K extends (keyof T['attributes'] | keyof BaseAttributes)>(key: K, values: T['attributes'][K] extends Array<infer E> ? E[] : unknown[]): this;
+        containsAllStartingWith<K extends (keyof T['attributes'] | keyof BaseAttributes)>(key: K, values: string[]): this;
         count(options?: Query.CountOptions): Promise<number>;
         descending<K extends (keyof T['attributes'] | keyof BaseAttributes)>(key: K | K[]): this;
         doesNotExist<K extends (keyof T['attributes'] | keyof BaseAttributes)>(key: K): this;
